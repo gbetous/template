@@ -28,14 +28,42 @@ file 'app/views/layouts/application.html.erb', <<-CODE
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-<title></title>
+<title><%= yield :title %></title>
+<%= stylesheet_link_tag "site.css" %>
 </head>
 
 <body>
+  <%= render :partial => "shared/menu" %>
+
+  <% flash.each do |key, msg| %>
+    <%= content_tag :div, msg, :id => key %>
+  <% end %>
+
   <%=yield%>
+
+  <%= render :partial => "shared/footer" %>
 </body>
 
 </html>
+CODE
+
+file 'app/views/shared/_menu.html.erb', <<-CODE
+(menu)
+CODE
+
+file 'app/views/shared/_footer.html.erb', <<-CODE
+<hr />
+CODE
+
+file 'public/stylesheets/site.css', <<-CODE
+body
+{
+  font-size:75%;
+  font-family:verdana,arial,'sans serif';
+  background-color:#FFFFF0;
+  color:#505050;
+  margin:10px;
+}
 CODE
 
 # Welcome controller

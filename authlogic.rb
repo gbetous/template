@@ -135,6 +135,7 @@ route("map.resource :user_session")
 
 route("map.resource :account, :controller => 'users'")
 route("map.resources :users")
+route("map.register 'register', :controller => 'users', :action => 'new'")
 route("map.login 'login', :controller => 'user_sessions', :action => 'new'")
 route("map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'")
 
