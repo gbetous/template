@@ -252,3 +252,14 @@ file "app/views/users/show.html.erb", <<-CODE
 
 <%= link_to 'Edit', edit_account_path %>
 CODE
+
+file 'app/views/shared/_menu.html.erb', <<-CODE
+<%= link_to "Welcome", root_path%> |
+<% if current_user %>
+  <%= link_to "Logout", logout_path%> |
+<% else %>
+  <%= link_to "Login", login_path%> |
+  <%= link_to "Register", register_path%>
+<% end %>
+CODE
+
