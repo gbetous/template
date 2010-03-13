@@ -21,6 +21,23 @@ config/database.yml
 db/*.sqlite3  
 END
 
+# Application template
+file 'app/views/layouts/application.html.erb', <<-CODE
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title></title>
+</head>
+
+<body>
+  <%=yield%>
+</body>
+
+</html>
+CODE
+
 # Welcome controller
 if yes?("Do you want a Welcome controller ?")
   generate :controller, "welcome index"  
@@ -28,4 +45,18 @@ if yes?("Do you want a Welcome controller ?")
   git :rm => "public/index.html"  
   git :add => "."
   git :commit => "-m 'adding welcome controller.'"
+end
+
+
+# Authlogic 
+if yes?("Do you want to use Authlogic ?")
+
+  TEMPLATES = "/home/guillaume/src/template"
+   
+  load_template("#{TEMPLATES}/authlogic.rb")
+
+  git :add => "."
+  git :commit => "-m 'adding authlogic'"
+
+  rake('db:migrate')
 end
