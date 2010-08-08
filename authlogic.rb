@@ -37,7 +37,7 @@ class CreateUsers < ActiveRecord::Migration
 end
 CODE
 
-generate(:controller,"user_session") 
+generate(:controller,"user_sessions") 
 
 file "app/controllers/user_sessions_controller.rb", <<-CODE
 class UserSessionsController < ApplicationController
