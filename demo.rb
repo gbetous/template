@@ -14,11 +14,11 @@ git :add => "."
 git :commit => "-m 'initial commit from template generator'"
 
 file '.gitignore', <<-END  
-.DS_Store  
-log/*.log  
-tmp/**/*  
-config/database.yml  
-db/*.sqlite3  
+.DS_Store
+log/*.log
+tmp/**/*
+config/database.yml
+db/*.sqlite3
 END
 
 # Application template
